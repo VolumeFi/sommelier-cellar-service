@@ -62,3 +62,5 @@ typings/
 
 # uploads
 /public/uploads
+
+.idea/

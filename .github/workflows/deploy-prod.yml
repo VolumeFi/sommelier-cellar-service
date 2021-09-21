@@ -1,0 +1,21 @@
+name: Deploy production
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: production
+    steps:
+      - name: build
+        run: |
+          cd /home/rootedbox/sommelier-cellar-service
+          git pull origin main
+          npm install
+
+      - name: restart service
+        run: |
+          sudo systemctl cellar-messaging
