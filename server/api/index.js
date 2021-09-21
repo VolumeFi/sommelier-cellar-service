@@ -4,6 +4,8 @@ import { publicVapidKey, privateVapidKey } from '../config';
 const webpush = require('web-push');
 const router = new Router();
 
+console.log(publicVapidKey);
+console.log(privateVapidKey);
 webpush.setVapidDetails('mailto:val@wdev733@gmail.com', publicVapidKey, privateVapidKey);
 
 router.get('/send', (req, res) => {
