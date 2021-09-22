@@ -13,8 +13,7 @@
     "prod": "cross-env NODE_ENV=production nodemon -i \"*.test.js\" -r dotenv-safe/config .",
     "lint": "eslint server",
     "docs": "apidoc -i server -o docs && apidoc-markdown -p docs -o DOCS.md",
-    "postdocs": "opn docs/index.html",
-    "preinstall": "npx npm-force-resolutions"
+    "postdocs": "opn docs/index.html"
   },
   "jest": {
     "testEnvironment": "node",
