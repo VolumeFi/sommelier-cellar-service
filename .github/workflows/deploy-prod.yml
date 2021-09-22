@@ -14,7 +14,6 @@ jobs:
         run: |
           cd /home/rootedbox/sommelier-cellar-service
           git pull origin master
-          npm install
 
       - name: restart service
         run: |
