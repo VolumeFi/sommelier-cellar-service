@@ -9,7 +9,7 @@ console.log(privateVapidKey);
 webpush.setVapidDetails('mailto:val@wdev733@gmail.com', publicVapidKey, privateVapidKey);
 
 router.get('/send', (req, res) => {
-  res.status(201).json({code: 201});
+  res.status(201).json({code: 201, success: true});
 
 //   console.log(req.pushManager);
 //   console.log(navigator);
@@ -18,6 +18,19 @@ router.get('/send', (req, res) => {
 //   webpush.sendNotification(subscription, payload).catch(error => {
 //     console.error(error.stack);
 //   });
+});
+
+router.post('/subscribe', (req, res) => {
+  const subscription = req.body;
+  res.status(201).json({code: 201, success: true});
+  
+  const payload = JSON.stringify({ title: 'test' });
+  
+  console.log(subscription);
+
+  webpush.sendNotification(subscription, payload).catch(error => {
+    console.error(error.stack);
+  });
 });
 
 export default router;
