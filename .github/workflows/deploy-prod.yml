@@ -1,9 +1,9 @@
 name: Deploy production
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
       - name: build
         run: |
           cd /home/rootedbox/sommelier-cellar-service
-          git pull origin main
+          git pull origin master
           npm install
 
       - name: restart service
