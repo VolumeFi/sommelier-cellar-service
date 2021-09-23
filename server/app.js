@@ -1,15 +1,25 @@
 import http from 'http';
+import https from 'https';
+import fs from 'fs';
 import { env, port, ip, apiRoot } from './config';
 import express from './services/express';
 import api from './api';
 
+const key = fs.readFileSync(__dirname + '/../certs/selfsigned.key');
+const cert = fs.readFileSync(__dirname + '/../certs/selfsigned.crt');
+const options = {
+  key: key,
+  cert: cert
+};
+
 const app = express(apiRoot, api);
-const server = http.createServer(app);
+
+const server = env === 'production' ? https.createServer(app, options) : http.createServer(app);
 
 setImmediate(() => {
   server.listen(port, ip, () => {
     console.log(
-      'Express server listening on http://%s:%d, in %s mode',
+      'Express server listening on https://%s:%d, in %s mode',
       ip,
       port,
       env
