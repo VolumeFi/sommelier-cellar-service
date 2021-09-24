@@ -16,7 +16,7 @@ const options = {
 
 const app = express(apiRoot, api);
 
-const server = env === 'production' ? https.createServer(app, options) : http.createServer(app);
+const server = env === 'production' ? https.createServer(options, app) : http.createServer(app);
 
 setImmediate(() => {
   server.listen(port, ip, () => {
