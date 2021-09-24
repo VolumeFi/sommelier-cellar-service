@@ -5,8 +5,8 @@ import { env, port, ip, apiRoot, certFilePath, keyFilePath, keyChainPath } from 
 import express from './services/express';
 import api from './api';
 
-const key = fs.readFileSync(`${certFilePath}`);
-const cert = fs.readFileSync(`${keyFilePath}`);
+const key = fs.readFileSync(`${certFilePath}`, 'utf8');
+const cert = fs.readFileSync(`${keyFilePath}`, 'utf8');
 const ca = fs.readFileSync(`${keyChainPath}`, 'utf8');
 const options = {
   key: key,
