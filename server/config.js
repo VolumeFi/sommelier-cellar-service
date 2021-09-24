@@ -29,7 +29,8 @@ const config = {
     privateVapidKey: process.env.PRIVATE_VAPID_KEY || '',
     storyblokAccessToken: process.env.STORYBLOK_ACCESS_TOKEN || '',
     certFilePath: process.env.CERT || '',
-    keyFilePath: process.env.KEY || ''
+    keyFilePath: process.env.KEY || '',
+    keyChainPath: process.env.CHAIN || '',
   }
 };
 

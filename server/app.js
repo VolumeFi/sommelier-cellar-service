@@ -1,15 +1,17 @@
 import http from 'http';
 import https from 'https';
 import fs from 'fs';
-import { env, port, ip, apiRoot, certFilePath, keyFilePath } from './config';
+import { env, port, ip, apiRoot, certFilePath, keyFilePath, keyChainPath } from './config';
 import express from './services/express';
 import api from './api';
 
 const key = fs.readFileSync(`${certFilePath}`);
 const cert = fs.readFileSync(`${keyFilePath}`);
+const ca = fs.readFileSync(`${keyChainPath}`, 'utf8');
 const options = {
   key: key,
-  cert: cert
+  cert: cert,
+  ca: ca
 };
 
 const app = express(apiRoot, api);
