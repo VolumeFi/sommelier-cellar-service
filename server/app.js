@@ -1,12 +1,12 @@
 import http from 'http';
 import https from 'https';
 import fs from 'fs';
-import { env, port, ip, apiRoot } from './config';
+import { env, port, ip, apiRoot, certFilePath, keyFilePath } from './config';
 import express from './services/express';
 import api from './api';
 
-const key = fs.readFileSync(__dirname + '/../certs/selfsigned.key');
-const cert = fs.readFileSync(__dirname + '/../certs/selfsigned.crt');
+const key = fs.readFileSync(__dirname + `${certFilePath}`);
+const cert = fs.readFileSync(__dirname + `${keyFilePath}`);
 const options = {
   key: key,
   cert: cert
