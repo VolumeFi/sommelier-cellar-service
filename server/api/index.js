@@ -9,7 +9,7 @@ console.log(privateVapidKey);
 webpush.setVapidDetails('mailto:val@wdev733@gmail.com', publicVapidKey, privateVapidKey);
 
 router.get('/send', (req, res) => {
-  res.status(201).json({code: 201, version: '0.0.1'});
+  res.status(201).json({code: 201, version: '0.0.2'});
 });
 
 router.post('/subscribe', (req, res) => {
