@@ -6,12 +6,15 @@ import express from './services/express';
 import api from './api';
 
 const mongoose = require('mongoose');
+const job = require('./job');
 
 const app = express(apiRoot, api);
 
 mongoose.connect(mongodbUrl).then(() => {
   console.log('Connected to MongoDB');
   
+  job.start();
+
   const privateKey = fs.readFileSync('/etc/letsencrypt/live/msg.sommelier.finance/privkey.pem', 'utf8');
   const certificate = fs.readFileSync('/etc/letsencrypt/live/msg.sommelier.finance/cert.pem', 'utf8');
   const ca = fs.readFileSync('/etc/letsencrypt/live/msg.sommelier.finance/chain.pem', 'utf8');
