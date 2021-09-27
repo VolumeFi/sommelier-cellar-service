@@ -16,8 +16,8 @@ const NotificationJob = function () {
     setInterval(this.sendNotification.bind(this), 60 * 1000);
 }
 
-const beforeDayHour = 14;
-const todayHour = 14;
+const beforeDayHour = 7;
+const todayHour = 6;
 
 NotificationJob.prototype.sendNotification = async function() {
 
@@ -33,7 +33,7 @@ NotificationJob.prototype.sendNotification = async function() {
   const tomorrow = `${dt.getFullYear()}-${leadZero(dt.getMonth() + 1)}-${leadZero(dt.getDate())}`;
 
   console.log(hour, min);
-  if ((hour === beforeDayHour || hour === todayHour) && (min === 33)) {
+  if ((hour === beforeDayHour || hour === todayHour) && (min === 0)) {
     const response = await axios.get(
       `https://api.storyblok.com/v1/cdn/stories/?starts_with=events&token=${storyblokAccessToken}`
     )
@@ -53,17 +53,17 @@ NotificationJob.prototype.sendNotification = async function() {
     console.log(startDate);
 
     let shouldSend = false;
-    // if ((startDate === today) && (hour === todayHour)) {
-    //   shouldSend = true;
-    // }
+    if ((startDate === today) && (hour === todayHour)) {
+      shouldSend = true;
+    }
 
-    // if ((startDate === tomorrow) && (hour === beforeDayHour)) {
-    //   shouldSend = true;
-    // }
+    if ((startDate === tomorrow) && (hour === beforeDayHour)) {
+      shouldSend = true;
+    }
 
-    // if (shouldSend === false) {
-    //   return;
-    // }
+    if (shouldSend === false) {
+      return;
+    }
 
     // console.log(`https://api.storyblok.com/v1/cdn/stories/?token=${storyblokAccessToken}&starts_with=events`);
     // console.log(story);
