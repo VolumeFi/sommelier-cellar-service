@@ -77,7 +77,7 @@ NotificationJob.prototype.sendNotification = async function() {
         
     const payload = JSON.stringify(event);
     
-    const subscriptions = await Subscription.find();
+    const subscriptions = await Subscription.find({});
 
     if (subscriptions.length === 0) {
       return;
