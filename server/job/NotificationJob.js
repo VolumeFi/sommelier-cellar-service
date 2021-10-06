@@ -1,6 +1,8 @@
 import axios from "axios";
 import { publicVapidKey, privateVapidKey, storyblokAccessToken } from '../config';
 
+
+
 const Subscription = require('../models/subscription.model');
 
 const webpush = require('web-push');
@@ -74,9 +76,9 @@ NotificationJob.prototype.sendNotification = async function() {
       url: story.content.location,
       image: story.content.event_image.filename
     }
-        
+
     const payload = JSON.stringify(event);
-    
+
     const subscriptions = await Subscription.find({});
 
     if (subscriptions.length === 0) {

@@ -32,6 +32,7 @@ const config = {
     keyFilePath: process.env.KEY || '',
     keyChainPath: process.env.CHAIN || '',
     mongodbUrl: process.env.MONGODB_URL || 'mongodb://localhost:27017/sommelier-notification',
+    mixpanelToken: process.env.MIXPANEL_TOKEN || ''
   }
 };
 
